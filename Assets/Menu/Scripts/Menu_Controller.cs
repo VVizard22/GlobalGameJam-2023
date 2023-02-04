@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GGJ
 {
@@ -67,6 +68,18 @@ namespace GGJ
                 }
                 verticalTime += Time.deltaTime;
             }
+            if (Input.GetButtonDown("Submit") && !submit)
+            {
+                if (optionMenu == 1) SceneManager.LoadScene("miau");
+                if (optionMenu == 2) loadOptionsMenu();
+                if (optionMenu == 3) Application.Quit();
+
+            }
+
+        }
+        void loadOptionsMenu()
+        {
+
         }
         void menuSelection(int op)
         {
