@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace GGJ
 {
@@ -17,9 +18,9 @@ namespace GGJ
 
 
         [Header("Settings Elements")]
-        [SerializeField] SpriteRenderer music;
-        [SerializeField] SpriteRenderer sounds;
-        [SerializeField] SpriteRenderer back;
+        [SerializeField] Image music;
+        [SerializeField] Image sounds;
+        [SerializeField] Image back;
 
 
         [Header("Settings Sprites")]
@@ -40,16 +41,17 @@ namespace GGJ
         [SerializeField] AudioSource snd_Menu;
 
         [Header("Scripts")]
-        [SerializeField] GameObject mainScreen;
+        [SerializeField] GameObject mainScreenScripts;
 
-        int screen;
+        bool screen;
         int settingsOption, settingsOptionBe;
         bool submit;
         float vertical, horizontal;
         float verticalTime, horizontalTime;
         void Awake()
         {
-            screen = 1;
+            screen = true;
+            loadSettings();
             verticalTime = horizontalTime = 0;
             settingsOption = settingsOptionBe= 1;
             adjustOptions();
@@ -82,8 +84,6 @@ namespace GGJ
                         
                         if (settingsOption == 1 && ((horizontal < 0 && musicPower > 0) || horizontal > 0 && musicPower < 10))
                         {
-                            
-                            Debug.Log(settingsOption);
                             musicPower += (int)horizontal;
                             musicAdjust();
                         }
@@ -96,9 +96,10 @@ namespace GGJ
                     horizontalTime += Time.deltaTime;
                 }
 
-
+                
                 if (Input.GetButtonDown("Submit") && !submit)
-                { 
+                {
+                    
                     if (settingsOption == 3) loadMainMenu();
 
                 }
@@ -106,16 +107,27 @@ namespace GGJ
             }
         }
 
+        void saveSettings()
+        {
+            PlayerPrefs.SetInt("musicPower", musicPower);
+            PlayerPrefs.SetInt("soundsPower", soundsPower);
+            PlayerPrefs.Save();
+        }
+
+        void loadSettings()
+        {
+            musicPower = PlayerPrefs.GetInt("musicPower", 5);
+            soundsPower = PlayerPrefs.GetInt("soundsPower", 5);
+        }
         void musicAdjust()
         {
-            
             for ( int i = 0 ; i < 11; i++ )
             {
-                Debug.Log(musicPower);
                 if (i <= musicPower) music_Spr[i].sprite = vol_On;
                 else music_Spr[i].sprite = vol_Off;
-                snd_Menu.volume = (musicPower / 10f);
             }
+            Debug.Log(musicPower);
+            snd_Menu.volume = (musicPower / 10f);
         }
 
         void soundsAdjust()
@@ -136,32 +148,19 @@ namespace GGJ
 
         void settingsSelection(int op)
         {
-            settingsOption = op;
-            if (op == 1) music.sprite = Music_On;
-            if (op == 2) sounds.sprite = Sounds_On;
-            if (op == 3) back.sprite = Back_On;
-            if (settingsOptionBe == 1) music.sprite = Music_Off;
-            if (settingsOptionBe == 2) sounds.sprite = Sounds_Off;
-            if (settingsOptionBe == 3) back.sprite = Back_Off;
-            settingsOptionBe = op;
-
+           
         }
 
         void loadMainMenu()
         {
-            screenMenu.SetActive(true);
-            screenSettings.SetActive(false);
+           
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            vertical = Input.GetAxisRaw("Vertical");
-            horizontal = Input.GetAxisRaw("Horizontal");
-            if (Input.GetButtonUp("Submit")) submit = false;
-            if (vertical == 0) verticalTime = 0;
-            if (horizontal == 0) horizontalTime = 0;
-            if (screen == 1) settingsMenu();
+
         }
     }
 }
