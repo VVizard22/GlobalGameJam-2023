@@ -14,6 +14,9 @@ namespace GGJ.Hooks
         [SerializeField] FloatReference _mouseX;
         [SerializeField] FloatReference _mouseY;
 
+        [SerializeField] FloatReference _playerX;
+        [SerializeField] FloatReference _playerY;
+
         int index = 0;
         public void SetAnchorPoint()
         {
@@ -25,6 +28,8 @@ namespace GGJ.Hooks
                 if (!anchor.isAnchored)
                 {
                     done = true;
+                    //Vector2 directionVector = new Vector2(_mouseX, _mouseY);
+                    //Debug.DrawRay(new Vector3(_playerX,_playerY,0),-directionVector,Color.red,2);
                     anchor.MovePosition(_mouseX, _mouseY);
                 }
             }

@@ -9,8 +9,7 @@ namespace GGJ.Hooks
     {
         [SerializeField]
         FloatReference[] _playerPosition = new FloatReference[2];
-        [SerializeField]
-        FloatReference[] _hookPosition = new FloatReference[2];
+
         [SerializeField] LineRenderer _lineRenderer;
 
         //[SerializeField] FloatReference _hookLenght;
@@ -51,7 +50,7 @@ namespace GGJ.Hooks
         {
 
             _playerPos = new Vector3(_playerPosition[0].Value, _playerPosition[1].Value, 0);
-            Vector3 _hookPos = new Vector3 (_hookPosition[0].Value, _hookPosition[1].Value, 0);
+            //Vector3 _hookPos = new Vector3 (_hookPosition[0].Value, _hookPosition[1].Value, 0);
 
             /*if (Vector3.Distance(_playerPos, _hookPos) > _hookLenght.Value)
             {
@@ -60,7 +59,7 @@ namespace GGJ.Hooks
                 _directionVector.Normalize();
                 _hookPos = _playerPos + _directionVector * _hookLenght.Value;
             }*/
-            _finalPoint = _hookPos;
+            //_finalPoint = _hookPos;
             _lineRenderer.SetPosition(0, _playerPos);
             _lineRenderer.SetPosition(1, _finalPoint);
 

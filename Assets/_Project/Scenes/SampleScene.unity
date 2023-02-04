@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000c942fc2c69bcdc07fb700b54a5b98b55d74e587f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -359,10 +359,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 49072893829725687, guid: 519a2fcefee7b6e4e86bccaaa4e5547b, type: 3}
-      propertyPath: EndHook
-      value: 
-      objectReference: {fileID: 11400000, guid: 0bffa2c0932fc3d48985fa1c22048e83, type: 2}
     - target: {fileID: 909517598314172323, guid: 519a2fcefee7b6e4e86bccaaa4e5547b, type: 3}
       propertyPath: m_Name
       value: CompletePlayer
@@ -424,7 +420,7 @@ GameObject:
   - component: {fileID: 896495961}
   - component: {fileID: 896495960}
   - component: {fileID: 896495959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (2)
   m_TagString: Hookable
   m_Icon: {fileID: 0}
@@ -646,7 +642,7 @@ GameObject:
   - component: {fileID: 2000630343}
   - component: {fileID: 2000630342}
   - component: {fileID: 2000630341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (1)
   m_TagString: Hookable
   m_Icon: {fileID: 0}
