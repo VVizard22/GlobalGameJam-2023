@@ -26,6 +26,10 @@ namespace GGJ
         [SerializeField] Sprite Quit_Off;
         [SerializeField] Sprite Quit_On;
 
+        [Header("Sounds")]
+        [SerializeField] AudioSource snd_Options;
+        [SerializeField] AudioSource snd_Selection;
+
 
         int screen;
         int optionMenu, optionMenuBe;
@@ -83,6 +87,7 @@ namespace GGJ
         }
         void menuSelection(int op)
         {
+            snd_Options.Play();
             optionMenu = op;
             if (op == 1) Play.sprite = Play_On;
             if (op == 2) Options.sprite = Options_On;
