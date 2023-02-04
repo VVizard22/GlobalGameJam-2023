@@ -359,6 +359,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 49072893829725687, guid: 519a2fcefee7b6e4e86bccaaa4e5547b, type: 3}
+      propertyPath: EndHook
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bffa2c0932fc3d48985fa1c22048e83, type: 2}
     - target: {fileID: 909517598314172323, guid: 519a2fcefee7b6e4e86bccaaa4e5547b, type: 3}
       propertyPath: m_Name
       value: CompletePlayer

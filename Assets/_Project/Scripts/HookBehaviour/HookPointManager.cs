@@ -18,19 +18,19 @@ namespace GGJ.Hooks
         public void SetAnchorPoint()
         {
             bool done = false;
-
+            
             for (int i = 0; i < _anchors.Length && !done; i++)
             {
                 HookAnchor anchor = _anchors[i];
                 if (!anchor.isAnchored)
                 {
                     done = true;
-                    anchor.AnchorPoint(_mouseX, _mouseY);
+                    anchor.MovePosition(_mouseX, _mouseY);
                 }
             }
             if (!done)
             {
-                _anchors[index].AnchorPoint(_mouseX,_mouseY);
+                _anchors[index].MovePosition(_mouseX,_mouseY);
                 index++;
                 if (index >= _anchors.Length)
                     index = 0;
@@ -44,7 +44,9 @@ namespace GGJ.Hooks
                 _disableJointsEvent.Raise();
                 foreach (HookAnchor hA in _anchors)
                 {
+                    hA.DisableJoint();
                     hA.DisableAnchor();
+                    hA.MovePosition(0,0);
                 }
             }
         }

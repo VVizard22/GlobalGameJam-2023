@@ -10,21 +10,28 @@ namespace GGJ.Hooks
         [SerializeField]
         GameEvent SendJoint;
         [SerializeField]
+        GameEvent EndHook;
+        [SerializeField]
         public bool isAnchored { get; private set; } = false;
         [SerializeField]
         GameObject _visualAid;
+
+        bool canHook = false;
         
-        public void AnchorPoint(float mouseX, float mouseY)
+        public void AnchorPoint()
         {
             isAnchored = true;
-            transform.position = new Vector3(mouseX, mouseY, 0f);
             _visualAid.SetActive(true);
             SendJoint.Raise();
+        }
+        public void MovePosition(float mouseX,float mouseY)
+        {
+            transform.position = new Vector3(mouseX,mouseY,0f);
         }
 
         public void DisableJoint()
         {
-            SendJoint.Raise();
+            EndHook.Raise();
         }
 
         public void DisableAnchor()
@@ -38,10 +45,11 @@ namespace GGJ.Hooks
             GameObject current = collision.gameObject;
             if (!current.CompareTag("Hookable"))
             {
-                DisableJoint();
-                DisableAnchor();
+                //DisableJoint();
+                //DisableAnchor();
+                return;
             }
-            Debug.Log("Test");
+            AnchorPoint();
         }
     }
 }

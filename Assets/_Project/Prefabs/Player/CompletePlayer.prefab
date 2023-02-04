@@ -158,6 +158,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HookPointManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2479841308355616989, guid: 72a3d67b682712444a9f0db2239d6566, type: 3}
+      propertyPath: EndHook
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bffa2c0932fc3d48985fa1c22048e83, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72a3d67b682712444a9f0db2239d6566, type: 3}
 --- !u!4 &49072892175443997 stripped
