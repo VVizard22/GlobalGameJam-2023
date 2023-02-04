@@ -10,6 +10,7 @@ namespace GGJ
     {
         [Header("General Options")]
         [SerializeField] GameObject menuScreen;
+        [SerializeField] GameObject mainScreen;
         [SerializeField] GameObject optionsMenu;
         [SerializeField] float timeOptions;
 
@@ -29,6 +30,9 @@ namespace GGJ
         [Header("Sounds")]
         [SerializeField] AudioSource snd_Options;
         [SerializeField] AudioSource snd_Selection;
+
+        [Header("Scripts")]
+        [SerializeField] GameObject settingsScreen;
 
 
         int screen;
@@ -83,7 +87,8 @@ namespace GGJ
         }
         void loadOptionsMenu()
         {
-
+            optionsMenu.SetActive(true);
+            mainScreen.SetActive(false);
         }
         void menuSelection(int op)
         {

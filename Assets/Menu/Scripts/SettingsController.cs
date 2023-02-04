@@ -39,6 +39,9 @@ namespace GGJ
         [SerializeField] AudioSource snd_Selection;
         [SerializeField] AudioSource snd_Menu;
 
+        [Header("Scripts")]
+        [SerializeField] GameObject mainScreen;
+
         int screen;
         int settingsOption, settingsOptionBe;
         bool submit;
@@ -67,6 +70,7 @@ namespace GGJ
                         if (vertical == 1 && settingsOption > 1) settingsSelection(settingsOption - 1);
                         if (vertical == -1 && settingsOption < 3) settingsSelection(settingsOption + 1);
                         if (verticalTime > timeOptions) verticalTime = 0;
+                        
                     }
                     verticalTime += Time.deltaTime;
                 }
@@ -94,8 +98,8 @@ namespace GGJ
 
 
                 if (Input.GetButtonDown("Submit") && !submit)
-                {
-                    
+                { 
+                    if (settingsOption == 3) loadMainMenu();
 
                 }
 
@@ -122,6 +126,12 @@ namespace GGJ
                 if (i <= soundsPower) sound_Spr[i].sprite = vol_On;
                 else sound_Spr[i].sprite = vol_Off;
             }
+            GameObject[] sounds = GameObject.FindGameObjectsWithTag("sounds");
+            snd_Selection.Play();
+            foreach ( GameObject sound in sounds )
+            {
+                sound.GetComponent<AudioSource>().volume = (soundsPower/10f);
+            }
         }
 
         void settingsSelection(int op)
@@ -135,6 +145,12 @@ namespace GGJ
             if (settingsOptionBe == 3) back.sprite = Back_Off;
             settingsOptionBe = op;
 
+        }
+
+        void loadMainMenu()
+        {
+            screenMenu.SetActive(true);
+            screenSettings.SetActive(false);
         }
 
         // Update is called once per frame
