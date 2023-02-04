@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 454212819
+    locked: 0
+  - name: Piso
+    uniqueID: 4143505375
+    locked: 0
