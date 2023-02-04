@@ -30,8 +30,18 @@ namespace GGJ.Hooks
         public void DisableAnchor()
         {
             _visualAid.SetActive(false);
-            ;
             isAnchored = false;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            GameObject current = collision.gameObject;
+            if (!current.CompareTag("Hookable"))
+            {
+                DisableJoint();
+                DisableAnchor();
+            }
+            Debug.Log("Test");
         }
     }
 }
