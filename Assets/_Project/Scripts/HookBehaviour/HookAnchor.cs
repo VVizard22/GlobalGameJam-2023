@@ -18,7 +18,12 @@ namespace GGJ.Hooks
         public bool isAnchored { get; private set; } = false;
         [SerializeField]
         LayerMask _hookableLayer;
-        
+
+        private void Start()
+        {
+            DisableJoint();
+            DisableAnchor();
+        }
         public void AnchorPoint()
         {
             isAnchored = true;

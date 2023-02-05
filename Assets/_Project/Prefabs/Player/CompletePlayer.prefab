@@ -223,10 +223,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8646928910403764443, guid: 72a3d67b682712444a9f0db2239d6566, type: 3}
-      propertyPath: m_Loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646928910403764443, guid: 72a3d67b682712444a9f0db2239d6566, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -239,16 +235,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 7db422a9e1708f947b2599e3d81fd208, type: 2}
     - target: {fileID: 8646928910403764443, guid: 72a3d67b682712444a9f0db2239d6566, type: 3}
-      propertyPath: m_Positions.Array.data[1].x
-      value: 59.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646928910403764443, guid: 72a3d67b682712444a9f0db2239d6566, type: 3}
-      propertyPath: m_Positions.Array.data[1].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646928910403764443, guid: 72a3d67b682712444a9f0db2239d6566, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8646928910403764443, guid: 72a3d67b682712444a9f0db2239d6566, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
