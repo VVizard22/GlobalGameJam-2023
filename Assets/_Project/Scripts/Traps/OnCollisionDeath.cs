@@ -6,6 +6,7 @@ namespace GGJ
 {
     public class OnCollisionDeath : MonoBehaviour
     {
+        [SerializeField]
         private Rigidbody rb;
         void Start()
         {
@@ -21,6 +22,14 @@ namespace GGJ
         private void Die()
         {
             rb.GetComponent<Rigidbody>().isKinematic = true;
+            Waiter();
+            Application.LoadLevel(Application.loadedLevel);
+
+        }
+
+        IEnumerator Waiter()
+        {
+            yield return new WaitForSeconds(3);
         }
     }
 }
