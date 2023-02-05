@@ -13,10 +13,16 @@ namespace GGJ
         float _errorMargin = 2f;
         Vector3 _directionVector = Vector3.zero;
 
+        bool shouldMove = true;
+
+        public void SetShouldMove(bool should) => shouldMove = should;
 
         // Update is called once per frame
         private void FixedUpdate()
         {
+            if (!shouldMove)
+                return;
+
             _directionVector = _Target.position - transform.position;
             _directionVector.Normalize();
             _directionVector *= multiplyer;

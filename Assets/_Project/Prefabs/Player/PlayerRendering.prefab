@@ -154,13 +154,6 @@ MonoBehaviour:
   - UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 8aa64089c518f9041bd0930374611eb9, type: 2}
-  _hookPosition:
-  - UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: a34e28688b2af4949acd8ce829a9014c, type: 2}
-  - UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: fee8f9b1b96905e4eafd41916e334219, type: 2}
   _lineRenderer: {fileID: 2865418022712787347}
   _hookAnimationController: {fileID: 2865418022712787351}
 --- !u!114 &2865418022712787348
@@ -386,6 +379,7 @@ GameObject:
   - component: {fileID: 2865418023800719788}
   - component: {fileID: 3504897537840838971}
   - component: {fileID: 5877273707187973933}
+  - component: {fileID: 3627201117670925201}
   m_Layer: 0
   m_Name: PlayerRendering
   m_TagString: Untagged
@@ -599,3 +593,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _positionX: {fileID: 11400000, guid: 5c864514b01deb14095bbea8fe7f5562, type: 2}
   _positionY: {fileID: 11400000, guid: 8aa64089c518f9041bd0930374611eb9, type: 2}
+--- !u!95 &3627201117670925201
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865418023800719776}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 377d70a41c8c6bd48be855a07a9fed55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

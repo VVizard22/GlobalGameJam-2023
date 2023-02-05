@@ -1,34 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RoboRyanTron.Unite2017.Events;
 
 namespace GGJ
 {
     public class OnCollisionDeath : MonoBehaviour
     {
         [SerializeField]
-        private SpriteRenderer spriteRenderer;
+        GameEvent playerDie;
+        [SerializeField]
+        GameEvent resetOnDie;
+        [SerializeField]
+        private SpriteRenderer _spriteRenderer;
+        [SerializeField]
+        private Rigidbody2D _rb;
+        [SerializeField]
+        private Animator _animator;
         void Start()
         {
-           spriteRenderer = GetComponent<SpriteRenderer>();
+           _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        private void OnCollisionEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Kill"))
-                Die();
+            GameObject current = collision.gameObject;
+
+            if (current == null)
+                return;
+
+            if (!current.CompareTag("Kill"))
+                return;
+
+            Die();
         }
 
         private void Die()
         {
-            spriteRenderer.enabled = false;
-            Debug.Log("Te moriste papa");
+            _rb.bodyType = RigidbodyType2D.Static;
+            _animator.SetBool("Die", true);
+            playerDie.Raise();
+            //Debug.Log("Te moriste papa");
+            StartCoroutine(Waiter());
       
         }
 
         IEnumerator Waiter()
         {
             yield return new WaitForSeconds(3);
+            resetOnDie.Raise();
         }
     }
 }
