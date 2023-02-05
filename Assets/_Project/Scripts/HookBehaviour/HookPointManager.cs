@@ -17,9 +17,25 @@ namespace GGJ.Hooks
         [SerializeField] FloatReference _playerX;
         [SerializeField] FloatReference _playerY;
 
+        bool shouldMove = true;
+        private void OnEnable()
+        {
+            PauseMenuHandler.OnPauseMenu += SetShouldMove;
+        }
+
+        private void OnDisable()
+        {
+            PauseMenuHandler.OnPauseMenu -= SetShouldMove;
+        }
+
+        private void SetShouldMove(bool should) => shouldMove = should;
+
         int index = 0;
         public void SetAnchorPoint()
         {
+            if (!shouldMove)
+                return;
+
             bool done = false;
             
             for (int i = 0; i < _anchors.Length && !done; i++)

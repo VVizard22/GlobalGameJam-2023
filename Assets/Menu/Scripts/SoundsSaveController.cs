@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 
 namespace GGJ
@@ -11,17 +12,11 @@ namespace GGJ
 
     {
         [SerializeField] Slider volumeSlider = null;
-        [SerializeField] TMP_Text volumeTextUI = null;
+        [SerializeField] AudioMixer _mixer;
 
         private void Awake()
         {
             LoadValues();
-        }
-
-        public void VolumeSlider(float volume)
-        {
-            volumeTextUI.text = volume.ToString("0.0");
-
         }
 
         public void saveVolumeButton()
@@ -35,13 +30,7 @@ namespace GGJ
         void LoadValues()
         {
             float soundValue = PlayerPrefs.GetFloat("soundValue");
-            volumeSlider.value = soundValue;
-            GameObject[] sounds = GameObject.FindGameObjectsWithTag("sounds");
-            foreach (GameObject sound in sounds)
-            {
-                volumeSlider.value = soundValue;
-                sound.GetComponent<AudioSource>().volume = soundValue;
-            }
+            _mixer.SetFloat("Volume",soundValue);
         }
     }
 

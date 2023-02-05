@@ -27,5 +27,8 @@ namespace GGJ
 
         public void ReloadScene() =>
             LoadScene(currentSceneName);
+
+        public void Exit() =>
+            Application.Quit();
     }
 }

@@ -17,6 +17,17 @@ namespace GGJ
 
         public void SetShouldMove(bool should) => shouldMove = should;
 
+        private void OnEnable()
+        {
+            PauseMenuHandler.OnPauseMenu += SetShouldMove;
+        }
+
+        private void OnDisable()
+        {
+            PauseMenuHandler.OnPauseMenu -= SetShouldMove;
+
+        }
+
         // Update is called once per frame
         private void FixedUpdate()
         {

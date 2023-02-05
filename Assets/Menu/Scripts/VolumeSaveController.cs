@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.Audio;
+using RoboRyanTron.Unite2017.Events;
 
 namespace GGJ
 {
     public class VolumeSaveController : MonoBehaviour
     {
+        [SerializeField] GameEvent StartSong;
         [SerializeField] Slider volumeSlider = null;
-        [SerializeField] TMP_Text volumeTextUI = null;
+        [SerializeField] AudioMixer _mixer;
 
         private void Awake()
         {
             LoadValues();
-        }
-
-        public void VolumeSlider (float volume)
-        {
-            volumeTextUI.text = volume.ToString("0.0");
-
+            StartSong.Raise();
         }
 
         public void saveVolumeButton()
@@ -34,13 +31,7 @@ namespace GGJ
         void LoadValues()
         {
             float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
-            volumeSlider.value = volumeValue;
-            GameObject[] sounds = GameObject.FindGameObjectsWithTag("music");
-            foreach (GameObject sound in sounds)
-            {
-                volumeSlider.value = volumeValue;
-                sound.GetComponent<AudioSource>().volume = volumeValue;
-            }
+            _mixer.SetFloat("Volume", volumeValue);
         }
     }
 
