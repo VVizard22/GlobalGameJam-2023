@@ -7,13 +7,13 @@ namespace GGJ
     public class OnCollisionDeath : MonoBehaviour
     {
         [SerializeField]
-        private Rigidbody rb;
+        private SpriteRenderer spriteRenderer;
         void Start()
         {
-            rb = GetComponent<Rigidbody>();
+           spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnCollisionEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Kill"))
                 Die();
@@ -21,10 +21,9 @@ namespace GGJ
 
         private void Die()
         {
-            rb.GetComponent<Rigidbody>().isKinematic = true;
-            Waiter();
-            Application.LoadLevel(Application.loadedLevel);
-
+            spriteRenderer.enabled = false;
+            Debug.Log("Te moriste papa");
+      
         }
 
         IEnumerator Waiter()
